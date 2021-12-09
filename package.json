@@ -1,6 +1,6 @@
 {
-  "name": "react_next_secret-messages",
-  "private": true,
+  "name": "next_secret-messages",
+  "private": false,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -10,7 +10,8 @@
   "dependencies": {
     "next": "12.0.7",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "sass": "^1.44.0"
   },
   "devDependencies": {
     "eslint": "8.4.1",
