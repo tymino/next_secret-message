@@ -1,7 +1,7 @@
 import style from '../styles/FormMessage.module.sass';
 import { useEffect, useState } from 'react';
 
-const FormMessage = ({}) => {
+const FormMessage = ({ createMessage }) => {
   const [formMessage, setFormMessage] = useState({
     message: '',
     password: '',
@@ -29,7 +29,6 @@ const FormMessage = ({}) => {
     return errs;
   };
 
-
   const handleFormMessage = (e) => {
     setFormMessage({
       ...formMessage,
@@ -42,6 +41,8 @@ const FormMessage = ({}) => {
 
     const errs = validate();
     if (errs) return;
+
+    createMessage(formMessage);
 
     console.log(formMessage);
   };
