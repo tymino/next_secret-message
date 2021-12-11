@@ -8,6 +8,7 @@ import FormMessage from '../components/FormMessage';
 
 const Home = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [urlLink, setUrlLink] = useState('');
   const router = useRouter();
 
   // useEffect(() => {
