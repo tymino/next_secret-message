@@ -28,7 +28,7 @@ const Home = () => {
       setUrlLink(json.url);
       setActiveHomeBlock(false);
 
-      router.push('/');
+      // router.push('/');
     } catch (error) {
       console.log(error);
     }

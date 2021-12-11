@@ -17,7 +17,6 @@ const Message = () => {
   const submitPassword = async (password) => {
     try {
       const response = await fetch(
-        // `${process.env.URL}/api/message/${router.query.id}`,
         `https://secret-message-lime.vercel.app/api/message/${router.query.id}`,
         {
           method: 'POST',
