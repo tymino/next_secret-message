@@ -1,6 +1,6 @@
 import connectDB from '../../../utils/connectDB';
 import Messages from '../../../models/Messages';
-import { hash, verify, encrypt, decrypt } from '../../../utils/myCrypto';
+import { hash, encrypt } from '../../../utils/myCrypto';
 import urlGenerator from '../../../utils/urlGenerator';
 
 connectDB();
@@ -25,7 +25,6 @@ const mainAPI = async (req, res) => {
         });
         res.status(200).json({ success: true, url: newMessage.url });
       } catch (error) {
-        console.log(error, 'index api');
         res.status(400).json({ success: false });
       }
   }

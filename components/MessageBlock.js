@@ -2,8 +2,6 @@ import style from '../styles/components/MessageBlock.module.sass';
 import Link from 'next/link';
 
 const MessageBlock = ({ message }) => {
-
-  console.log(message);
   return (
     <div className={style.container}>
       <h1 className={style.header}>сообщение</h1>

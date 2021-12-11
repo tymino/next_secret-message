@@ -2,15 +2,13 @@ import style from '../styles/components/LinkBlock.module.sass';
 import Link from 'next/link';
 
 const LinkBlock = ({ urlLink, setActiveHomeBlock }) => {
-  const handleClickLink = () => {
-    setActiveHomeBlock(true);
-  };
+  const handleClickLink = () => setActiveHomeBlock(true);
 
   return (
     <div className={style.container}>
       <h1 className={style.header}>url</h1>
       <Link href={`/${urlLink}`}>
-        <a className={style.linkUrl} target="_blank" rel="noopener noreferrer">
+        <a className={style.linkUrl} rel="noopener noreferrer">
           {`${process.env.URL}/${urlLink}`}
         </a>
       </Link>
