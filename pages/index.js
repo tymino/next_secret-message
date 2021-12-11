@@ -14,7 +14,7 @@ const Home = () => {
 
   const createMessage = async (message) => {
     try {
-      const response = await fetch(`http://localhost:3000/api/message`, {
+      const response = await fetch(`${process.env.URL}/api/message`, {
         method: 'POST',
         headers: {
           Accept: 'application/json',
