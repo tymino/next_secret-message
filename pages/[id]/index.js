@@ -8,9 +8,10 @@ import FormPassword from '../../components/FormPassword';
 import MessageBlock from '../../components/MessageBlock';
 
 const Message = () => {
-  const [activePasswordBlock, setActivePasswordBlock] = useState(true);
   const router = useRouter();
-
+  const [activePasswordBlock, setActivePasswordBlock] = useState(true);
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState(false);
   const [encryptedMessage, setEncryptedMessage] = useState('');
 
   const submitPassword = async (password) => {
@@ -29,11 +30,33 @@ const Message = () => {
 
       const json = await response.json();
 
+      if (!json.success) {
+        setPassword('');
+        setError(true);
+        return;
+      }
+
       setEncryptedMessage(json.data);
       setActivePasswordBlock(false);
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const handleinputPassword = (e) => {
+    setError(false);
+    setPassword(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (password.length < 4 || password.length > 8) {
+      setError(true);
+      return;
+    }
+
+    submitPassword(password);
   };
 
   return (
@@ -45,7 +68,12 @@ const Message = () => {
       </Head>
 
       {activePasswordBlock ? (
-        <FormPassword submitPassword={submitPassword} />
+        <FormPassword
+          password={password}
+          error={error}
+          handleinputPassword={handleinputPassword}
+          handleSubmit={handleSubmit}
+        />
       ) : (
         <MessageBlock message={encryptedMessage} />
       )}

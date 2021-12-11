@@ -1,29 +1,6 @@
 import style from '../styles/components/FormPassword.module.sass';
-import { useState } from 'react';
 
-const FormPassword = ({ submitPassword }) => {
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState(false);
-
-  const validatePassword = () => {
-    if (password.length < 4 || password.length > 8) {
-      setError(true);
-      return true;
-    }
-  };
-
-  const handleinputPassword = (e) => {
-    setPassword(e.target.value);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    const isValid = validatePassword();
-    if (isValid) return;
-
-    submitPassword(password);
-  };
+const FormPassword = ({ password, error, handleinputPassword, handleSubmit }) => {
   return (
     <form className={style.container}>
       <h1 className={style.header}>пароль</h1>

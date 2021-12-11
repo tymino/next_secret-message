@@ -24,8 +24,8 @@ const messageAPI = async (req, res) => {
           res.status(200).json({ success: true, data: message });
           return;
         }
+        res.status(400).json({ success: false });
       } catch (error) {
-        console.log(error, 'index api');
         res.status(400).json({ success: false });
       }
   }
