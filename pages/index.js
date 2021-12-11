@@ -25,10 +25,12 @@ const Home = () => {
 
       const json = await response.json();
 
+      if (!json.success) {
+        return;
+      }
+
       setUrlLink(json.url);
       setActiveHomeBlock(false);
-
-      // router.push('/');
     } catch (error) {
       console.log(error);
     }
