@@ -1,5 +1,5 @@
-import style from '../styles/FormMessage.module.sass';
-import { useEffect, useState } from 'react';
+import style from '../styles/components/FormMessage.module.sass';
+import { useState } from 'react';
 
 const FormMessage = ({ createMessage }) => {
   const [formMessage, setFormMessage] = useState({
@@ -47,14 +47,8 @@ const FormMessage = ({ createMessage }) => {
     console.log(formMessage);
   };
 
-  // useEffect(() => {
-  //   validateText();
-  //   // validatePassword();
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [formMessage]);
-
   return (
-    <form className={style.homePage} method="post">
+    <form className={style.homePage}>
       <h1 className={style.header}>Сообщение</h1>
       <div className={style.messageWrapper}>
         <textarea

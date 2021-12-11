@@ -1,30 +1,20 @@
-import styles from '../styles/Home.module.sass';
+import styles from '../styles/pages/Home.module.sass';
 import Head from 'next/head';
 import fetch from 'isomorphic-unfetch';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 
 import FormMessage from '../components/FormMessage';
+import LinkBlock from '../components/LinkBlock';
 
 const Home = () => {
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [activeHomeBlock, setActiveHomeBlock] = useState(true);
   const [urlLink, setUrlLink] = useState('');
   const router = useRouter();
 
-  // useEffect(() => {
-  //   if (isSubmitting) {
-  //     if (Object.keys(errors).length === 0) {
-  //       createNote();
-  //     }
-  //     else {
-  //       setIsSubmitting(false);
-  //     }
-  //   }
-  // }, [errors]);
-
   const createMessage = async (message) => {
     try {
-      await fetch(`http://localhost:3000/api/message`, {
+      const response = await fetch(`http://localhost:3000/api/message`, {
         method: 'POST',
         headers: {
           Accept: 'application/json',
@@ -32,6 +22,12 @@ const Home = () => {
         },
         body: JSON.stringify(message),
       });
+
+      const json = await response.json();
+
+      setUrlLink(json.url);
+      setActiveHomeBlock(false);
+
       router.push('/');
     } catch (error) {
       console.log(error);
@@ -46,22 +42,13 @@ const Home = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <FormMessage createMessage={createMessage} />
+      {activeHomeBlock ? (
+        <FormMessage createMessage={createMessage} />
+      ) : (
+        <LinkBlock urlLink={urlLink} setActiveHomeBlock={setActiveHomeBlock} />
+      )}
     </div>
   );
 };
-
-// export const getServerSideProps = async (context) => {
-//   const res = await fetch(`${process.env.URL}/api/hello`);
-//   const data = await res.json();
-
-//   if (!data) {
-//     return { notFound: true };
-//   }
-
-//   return {
-//     props: { data },
-//   };
-// };
 
 export default Home;

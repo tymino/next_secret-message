@@ -9,15 +9,6 @@ const mainAPI = async (req, res) => {
   const { method } = req;
 
   switch (method) {
-    case 'GET':
-      // try {
-      //   const notes = await Messages.find({});
-
-      //   res.status(200).json({ success: true, data: notes });
-      // } catch (err) {
-      //   res.status(400).json({ success: false });
-      // }
-      break;
     case 'POST':
       try {
         const { message, password } = req.body;
@@ -32,7 +23,7 @@ const mainAPI = async (req, res) => {
           password: hashPassword,
           date: new Date(),
         });
-        res.status(200).json({ success: true, data: newMessage });
+        res.status(200).json({ success: true, url: newMessage.url });
       } catch (error) {
         console.log(error, 'index api');
         res.status(400).json({ success: false });
