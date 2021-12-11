@@ -14,7 +14,7 @@ const Home = () => {
 
   const createMessage = async (message) => {
     try {
-      const response = await fetch(`${process.env.URL}/api/message`, {
+      const response = await fetch(`https://secret-message-lime.vercel.app/api/message`, {
         method: 'POST',
         headers: {
           Accept: 'application/json',
