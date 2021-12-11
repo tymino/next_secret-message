@@ -38,13 +38,10 @@ const FormMessage = ({ createMessage }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     const errs = validate();
     if (errs) return;
 
     createMessage(formMessage);
-
-    console.log(formMessage);
   };
 
   return (

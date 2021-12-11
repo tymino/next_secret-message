@@ -8,9 +8,9 @@ import FormMessage from '../components/FormMessage';
 import LinkBlock from '../components/LinkBlock';
 
 const Home = () => {
+  const router = useRouter();
   const [activeHomeBlock, setActiveHomeBlock] = useState(true);
   const [urlLink, setUrlLink] = useState('');
-  const router = useRouter();
 
   const createMessage = async (message) => {
     try {
