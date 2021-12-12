@@ -9,7 +9,7 @@ const LinkBlock = ({ urlLink, setActiveHomeBlock }) => {
       <h1 className={style.header}>url</h1>
       <Link href={`/${urlLink}`}>
         <a className={style.linkUrl} rel="noopener noreferrer">
-          {`https://secret-message-lime.vercel.app/${urlLink}`}
+          {`${process.env.URL}/${urlLink}`}
         </a>
       </Link>
       <Link href="/">
