@@ -1,6 +1,5 @@
 import styles from '../styles/pages/Home.module.sass';
 import Head from 'next/head';
-import fetch from 'isomorphic-unfetch';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 
@@ -8,7 +7,6 @@ import FormMessage from '../components/FormMessage';
 import LinkBlock from '../components/LinkBlock';
 
 const Home = () => {
-  const router = useRouter();
   const [activeHomeBlock, setActiveHomeBlock] = useState(true);
   const [urlLink, setUrlLink] = useState('');
 
@@ -17,8 +15,9 @@ const Home = () => {
       const response = await fetch(`https://secret-message-lime.vercel.app/api/message`, {
         method: 'POST',
         headers: {
-          Accept: 'application/json',
+          'Accept': 'application/json',
           'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
         },
         body: JSON.stringify(message),
       });
