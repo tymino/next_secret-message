@@ -1,6 +1,5 @@
 // import styles from '../styles/pages/Message.module.sass';
 import Head from 'next/head';
-import fetch from 'isomorphic-unfetch';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 

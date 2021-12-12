@@ -1,7 +1,6 @@
 import styles from '../styles/pages/Home.module.sass';
 import Head from 'next/head';
 import { useState } from 'react';
-import { useRouter } from 'next/router';
 
 import FormMessage from '../components/FormMessage';
 import LinkBlock from '../components/LinkBlock';
