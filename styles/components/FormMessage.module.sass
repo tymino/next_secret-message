@@ -66,6 +66,7 @@
   color: var(--pink)
   font-size: 0.8rem
   text-transform: lowercase
+
 .submit
   align-self: center
   width: 50vw
@@ -87,8 +88,9 @@
 
   &:hover
     filter: contrast(140%)
-  &:focus
+  &:active
     filter: contrast(200%)
+    transform: translateY(2px)
 
 .error
   border: 1px solid var(--red)

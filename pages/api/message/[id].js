@@ -11,7 +11,10 @@ const messageAPI = async (req, res) => {
     body: { password },
   } = req;
 
-  if (id.length !== 6) return;
+  if (id.length !== 6) {
+    res.status(404).json({ success: false, error: true });
+    return;
+  }
 
   switch (method) {
     case 'POST':

@@ -30,7 +30,9 @@ const Message = () => {
 
       const json = await response.json();
 
-      if (!json.success) {
+      if (json.error) {
+        router.push('/404');
+      } else if (!json.success) {
         setPassword('');
         setError(true);
         return;
