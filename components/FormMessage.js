@@ -2,8 +2,10 @@ import style from '../styles/components/FormMessage.module.sass';
 import { useState } from 'react';
 
 const FormMessage = ({ createMessage }) => {
+  const [maxCharMessage] = useState(500);
   const [formMessage, setFormMessage] = useState({
-    message: '',
+    message:
+      'qwerwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwqwerwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwqwerwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwqwerwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwqwerwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwsdsdsssdsdsdsdssdsdsdsdsdsdsd',
     password: '',
   });
   const [errorFormMessage, setErrorFormMessage] = useState({
@@ -32,7 +34,7 @@ const FormMessage = ({ createMessage }) => {
   const handleFormMessage = (e) => {
     setFormMessage({
       ...formMessage,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value.slice(0, maxCharMessage),
     });
   };
 
@@ -57,7 +59,9 @@ const FormMessage = ({ createMessage }) => {
           name="message"
           onChange={handleFormMessage}
           value={formMessage.message}></textarea>
-        <p className={style.messageLimit}>0/500</p>
+        <p className={style.messageLimit}>
+          {`${formMessage.message.length}/${maxCharMessage}`}
+        </p>
       </div>
       <div className={style.passwordWrapper}>
         <input
