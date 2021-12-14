@@ -33,7 +33,20 @@
   &:focus
     filter: contrast(110%)
 
+  &::-webkit-scrollbar
+    width: 4px
 
+  &::-webkit-scrollbar-track
+    background: var(--yellow)
+    border-radius: var(--radius)
+    filter: contrast(110%)
+
+  &::-webkit-scrollbar-thumb
+    background: var(--pink)
+    border-radius: var(--radius)
+
+    &:hover
+      background: var(--orange)
 
 .messageLimit
   align-self: flex-end
